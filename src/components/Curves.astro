@@ -1,10 +1,18 @@
-<section>
+---
+import { getCollection } from "astro:content";
+const curves = await getCollection("curves");
+const articles = curves.sort((curve1, curve2) => curve1.data.order - curve2.data.order);
+---
+
+<section class="flex flex-col w-[100vw] h-[100vh] items-center justify-center">
     <article>
         <h3>Técnicas y trucos para trazar mejor</h3>
         <p>En esta sección encontrarás contenido práctico, claro y directo que te ayudará a mejorar tus habilidades en la carretera. A través de vídeos y guías sencillas aprenderás técnicas efectivas para trazar curvas con seguridad, precisión y confianza. Mi objetivo es proporcionarte herramientas prácticas que puedas aplicar desde el primer día, ayudándote a superar dificultades comunes y hacer de cada ruta una experiencia segura y emocionante.</p>
         <p>¡Descubre los secretos para dominar cada curva y disfrutar plenamente de tus salidas en moto!</p>
     </article>
     <section>
-        <article>los articulos</article>
+        <article>
+            { articles.map(article => article.data.title) }
+        </article>
     </section>
 </section>

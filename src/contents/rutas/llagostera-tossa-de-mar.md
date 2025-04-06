@@ -1,6 +1,0 @@
----
-title: 
-video:
-slug:
----
-
