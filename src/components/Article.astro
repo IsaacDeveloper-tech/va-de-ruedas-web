@@ -1,0 +1,10 @@
+---
+const { title, description, image } = Astro.props;
+---
+
+<article>
+    <h3>{title}</h3>
+    <p>{description}</p>
+    <img src={image} alt={title} />
+    <a href="#">Ver más</a>
+</article>

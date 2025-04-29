@@ -1,7 +1,8 @@
 ---
+import Article from "./Article.astro";
 import { getCollection } from "astro:content";
-const curves = await getCollection("curves");
-const articles = curves.sort((curve1, curve2) => curve1.data.order - curve2.data.order);
+const articles = await getCollection("articles");
+const articlesSorted = articles.sort((curve1, curve2) => curve1.data.order - curve2.data.order);
 ---
 
 <section class="flex flex-col w-[100vw] h-[100vh] items-center justify-center">
@@ -12,7 +13,12 @@ const articles = curves.sort((curve1, curve2) => curve1.data.order - curve2.data
     </article>
     <section>
         <article>
-            { articles.map(article => article.data.title) }
+            { articlesSorted.map(article => 
+                            <Article 
+                                title = {article.data.title} 
+                                description = {article.data.description}
+                                image = {article.data.image}
+                            />) }
         </article>
     </section>
 </section>
